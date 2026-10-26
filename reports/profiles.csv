@@ -1,0 +1,14 @@
+location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_readings
+9274,Southside Strength & Conditioning Area,0,9,0.23,69.0,1,1
+9274,Southside Strength & Conditioning Area,3,17,0.26,78.0,1,1
+9274,Southside Strength & Conditioning Area,6,18,0.25666666666666665,77.0,1,1
+9274,Southside Strength & Conditioning Area,6,20,0.19333333333333333,58.0,1,1
+9274,Southside Strength & Conditioning Area,6,22,0.12666666666666668,38.0,1,1
+9275,Polo Road Strength & Conditioning,0,9,0.172,43.0,1,1
+9275,Polo Road Strength & Conditioning,3,17,0.228,57.0,1,1
+9275,Polo Road Strength & Conditioning,4,20,0.2,50.0,1,1
+9276,Student Rec Center Strength & Conditioning,0,9,0.3075,123.0,1,1
+9276,Student Rec Center Strength & Conditioning,3,18,0.425,170.0,1,1
+9276,Student Rec Center Strength & Conditioning,6,18,0.2475,99.0,1,1
+9276,Student Rec Center Strength & Conditioning,6,19,0.2675,107.0,1,1
+9276,Student Rec Center Strength & Conditioning,6,21,0.13,52.0,1,1

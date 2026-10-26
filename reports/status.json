@@ -1,0 +1,40 @@
+{
+  "distinct_observations": 219,
+  "zones": 71,
+  "reset_rows": 0,
+  "closed_rows": 16,
+  "verified_open_rows": 13,
+  "clean_rows": 13,
+  "age_min_quantiles": {
+    "0.0": 1.2343338131904602,
+    "0.5": 146.76116667687893,
+    "0.9": 1858.4536665827036,
+    "0.95": 1865.51094661653,
+    "1.0": 14506.362600177526
+  },
+  "first_poll": "2026-10-22T23:31:59.653251+00:00",
+  "last_poll": "2026-10-26T14:09:39.789037+00:00",
+  "successful_polls": 6,
+  "failed_polls": 0,
+  "days_with_polls": 3,
+  "forecast_status": {
+    "9274": "Need at least 42 days of eligible next-reading pairs",
+    "9275": "Need at least 42 days of eligible next-reading pairs",
+    "9276": "Need at least 42 days of eligible next-reading pairs"
+  },
+  "control_status": {
+    "9274": "Pending approved Phase I window and 21 normal days with adequate coverage",
+    "9275": "Pending approved Phase I window and 21 normal days with adequate coverage",
+    "9276": "Pending approved Phase I window and 21 normal days with adequate coverage"
+  },
+  "limitations": [
+    "No verified hours means no utilization inference; snapshot ratios remain descriptive.",
+    "Manual headcounts are not arrivals. Leveling is an occupancy person-hour sensitivity scenario.",
+    "Threshold exposure uses capped carry-forward; unknown hours remain unknown.",
+    "Weather uses only archived forecast vintages available at each origin; game dates are sourced and availability-gated."
+  ],
+  "max_collection_gap_minutes": 4320.5629192666665,
+  "gaps_over_30_minutes": 4,
+  "collection_warning": "Scheduled cadence is requested, not guaranteed. Missing intervals are not recovered.",
+  "constraint_status": "Compare coverage and uncertainty bounds before ranking"
+}
