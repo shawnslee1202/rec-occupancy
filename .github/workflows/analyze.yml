@@ -1,0 +1,57 @@
+name: Refresh hours and analysis
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 4,10,16,22 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: occupancy-writer
+  cancel-in-progress: false
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python import_seeds.py
+      - run: python refresh_hours.py
+      - name: Archive weather forecast vintage
+        run: python weather.py
+      - run: python analyze.py
+      - run: python build_dashboard.py
+      - run: python build_report.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: occupancy-reports
+          path: reports/
+          retention-days: 30
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sources config reports docs raw rec_counts.sqlite
+          if ! git diff --cached --quiet; then
+            git commit -m 'analysis: refresh published hours and reports'
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+  deploy:
+    needs: analyze
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

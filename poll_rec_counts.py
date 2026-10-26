@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import os
+import math
 from pathlib import Path
 import sqlite3
 from datetime import datetime, timezone
@@ -68,7 +69,7 @@ def validate(payload):
         if not isinstance(row['IsClosed'], bool):
             raise ValueError('IsClosed must be boolean')
         for key in ('LastCount','TotalCapacity','MinCapacityRange','MaxCapacityRange'):
-            if not isinstance(row[key], (int,float)) or isinstance(row[key],bool):
+            if not isinstance(row[key], (int,float)) or isinstance(row[key],bool) or not math.isfinite(row[key]):
                 raise ValueError(f'{key} must be numeric')
         utc_stamp(row['LastUpdatedDateAndTime'])
 
@@ -84,6 +85,9 @@ def ingest(payload, polled, root=ROOT):
                 (r['LocationId'],local,stamp,polled,r['FacilityId'],r['FacilityName'],r['LocationName'],
                  r['LastCount'],r['TotalCapacity'],int(r['IsClosed']),r['MinCapacityRange'],r['MaxCapacityRange'],issue))
             new += cur.rowcount
+            db.execute('''UPDATE counts SET polled_at_utc=?,last_count=?,capacity=?,is_closed=?
+                WHERE location_id=? AND last_updated=? AND julianday(polled_at_utc)>julianday(?)''',
+                (polled,r['LastCount'],r['TotalCapacity'],int(r['IsClosed']),r['LocationId'],local,polled))
             db.execute('INSERT OR IGNORE INTO sightings VALUES (?,?,?,?,?,?)',
                 (polled,r['LocationId'],local,r['LastCount'],r['TotalCapacity'],int(r['IsClosed'])))
         digest = hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
@@ -93,11 +97,13 @@ def ingest(payload, polled, root=ROOT):
 
 def poll(root=ROOT):
     root = Path(root)
+    root.mkdir(parents=True,exist_ok=True)
     polled = datetime.now(timezone.utc).isoformat(timespec='microseconds')
     try:
         request = Request(URL,headers={'User-Agent':'TAMURecOccupancyResearch/1.0 (aggregate research; polling every 10 minutes)','Accept':'application/json'})
         with urlopen(request,timeout=45) as response:
             raw = response.read().decode('utf-8-sig')
+        polled = datetime.now(timezone.utc).isoformat(timespec='microseconds')
         # Archive before validation so even a changed feed can be reprocessed.
         folder = root / 'raw'
         folder.mkdir(exist_ok=True)
