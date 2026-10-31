@@ -1,22 +1,22 @@
 {
-  "distinct_observations": 938,
+  "distinct_observations": 986,
   "zones": 71,
   "reset_rows": 0,
   "closed_rows": 63,
-  "verified_open_rows": 72,
-  "clean_rows": 72,
+  "verified_open_rows": 74,
+  "clean_rows": 74,
   "age_min_quantiles": {
     "0.0": 0.4426335543394089,
-    "0.5": 114.43482488393784,
-    "0.9": 351.9820186793804,
-    "0.95": 1257.851857859641,
+    "0.5": 136.94568313658237,
+    "0.9": 351.9806335866451,
+    "0.95": 1255.839192084968,
     "1.0": 14506.362600177526
   },
   "first_poll": "2026-10-22T23:31:59.653251+00:00",
-  "last_poll": "2026-10-30T23:55:45.856773+00:00",
-  "successful_polls": 27,
+  "last_poll": "2026-10-31T10:34:13.123385+00:00",
+  "successful_polls": 29,
   "failed_polls": 0,
-  "days_with_polls": 7,
+  "days_with_polls": 8,
   "forecast_status": {
     "9274": "Need at least 42 days of eligible next-reading pairs",
     "9275": "Need at least 42 days of eligible next-reading pairs",
@@ -34,7 +34,7 @@
     "Weather uses only archived forecast vintages available at each origin; game dates are sourced and availability-gated."
   ],
   "max_collection_gap_minutes": 4320.5629192666665,
-  "gaps_over_30_minutes": 25,
+  "gaps_over_30_minutes": 27,
   "collection_warning": "Scheduled cadence is requested, not guaranteed. Missing intervals are not recovered.",
   "constraint_status": "Compare coverage and uncertainty bounds before ranking"
 }
