@@ -5,7 +5,7 @@ import io
 import json
 from pathlib import Path
 import pandas as pd
-from poll_rec_counts import ROOT
+from rec_occupancy.collection.poll_rec_counts import ROOT
 
 def chart(fig):
     import matplotlib.pyplot as plt

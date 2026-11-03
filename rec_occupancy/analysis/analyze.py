@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from poll_rec_counts import ROOT, connect
+from rec_occupancy.collection.poll_rec_counts import ROOT, connect
 
 def hourly_bins(clean):
     if clean.empty:
@@ -84,7 +84,7 @@ def forecast_room(g, db=None):
     g.loc[g.game_schedule_unknown==1,'home_game']=0
     features+=['home_game','game_schedule_unknown']
     if db is not None:
-        from weather import features as weather_features
+        from rec_occupancy.collection.weather import features as weather_features
         weather=weather_features(g.origin,db)
         for col in weather.columns:
             g[col+'_missing']=weather[col].isna().astype(int)

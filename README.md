@@ -22,17 +22,17 @@ python -m venv .venv
 # Windows: .venv\Scripts\activate
 # Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements.txt
-python poll_rec_counts.py
-python refresh_hours.py
-python weather.py
-python analyze.py
-python build_dashboard.py
+python -m rec_occupancy.collection.poll_rec_counts
+python -m rec_occupancy.collection.refresh_hours
+python -m rec_occupancy.collection.weather
+python -m rec_occupancy.analysis.analyze
+python -m rec_occupancy.reporting.build_dashboard
 python -m unittest discover -s tests -v
 ```
 
 Open `reports/dashboard.html`. It includes all zones, a searchable table, preliminary heatmaps, and forecast/control-chart panels that remain explicitly pending until data exists. Charts are embedded; no external JavaScript or CDN is required. It is regenerated, not a continuously updating display.
 
-Rebuild a fresh database from archives with `python poll_rec_counts.py --replay raw/YYYY-MM-DD.jsonl --root /path/to/rebuilt`. Replay each file in chronological order. Import the corresponding hours afterward. The poller only needs Python and `tzdata`; analytical dependencies are separate.
+Rebuild a fresh database from archives with `python -m rec_occupancy.collection.poll_rec_counts --replay raw/YYYY-MM-DD.jsonl --root /path/to/rebuilt`. Replay each file in chronological order. Import the corresponding hours afterward. The poller only needs Python and `tzdata`; analytical dependencies are separate.
 
 ## Deployment and operations
 
@@ -54,7 +54,7 @@ SQLite does not natively understand IANA daylight-saving rules. Conversion there
 
 Staff count timestamps can be old even on the first capture. The first capture's median age across all zones is about 352 minutes; some records are many days old. This distribution includes closed and inactive zones and must not be generalized to weight-room measurement cadence. Nonpositive capacities, negative counts, closed flags, reset candidates, revisions and materially future timestamps are excluded from utilization. Values above capacity are retained and should be investigated, not clipped away.
 
-Published hours come from the LiveWhale widgets embedded in the official Rec Sports hours page. `refresh_hours.py` archives each response and maps only SRC, Southside and Polo Road building schedules to their strength rooms. Explicit special-event summaries are skipped for manual review. It preserves the published 11:59 pm end literally. No hours are invented for other zones. Recheck room-specific closures; building hours are only an upper bound if a room has a separate closure. Additional zone schedules go into `config/open_intervals.csv` with sources and verification timestamps, then `python import_hours.py config/open_intervals.csv`.
+Published hours come from the LiveWhale widgets embedded in the official Rec Sports hours page. `refresh_hours.py` archives each response and maps only SRC, Southside and Polo Road building schedules to their strength rooms. Explicit special-event summaries are skipped for manual review. It preserves the published 11:59 pm end literally. No hours are invented for other zones. Recheck room-specific closures; building hours are only an upper bound if a room has a separate closure. Additional zone schedules go into `config/open_intervals.csv` with sources and verification timestamps, then `python -m rec_occupancy.collection.import_hours config/open_intervals.csv`.
 
 ## Analytical interpretation
 
@@ -64,7 +64,7 @@ Published hours come from the LiveWhale widgets embedded in the official Rec Spo
 
 **Forecast:** origin is the first poll when the current reading became available; target is the next recorded reading. Evaluate only target horizons 30-120 minutes after origin and disclose their distribution. Features use nominal origin+1-hour time, never the future actual reading timestamp. Training labels must already be available before the holdout cutoff. The final 14 days are held out after at least 42 days of eligible pairs; weekly baseline, last-value and ridge are evaluated on the same seasonal-baseline-supported rows. Report common-support coverage. Weather uses the latest archived forecast vintage available at each origin, never realized weather fetched later. Missing weather is explicitly indicated. Home-game flags are unknown before their verification timestamp. Ridge regularization is fixed in advance; future tuning must use earlier rolling folds, never the final holdout. The evaluation tests next observed reading, not a guaranteed clock-hour forecast. Never claim it beats both baselines unless the measured results do.
 
-**I-MR:** after reviewing the first three normal weeks and coverage, run `python control.py --phase-start YYYY-MM-DD --phase-end YYYY-MM-DD`. Require 21 accepted Phase I days; moving ranges use consecutive calendar days only. Default daily inclusion is at least ten observed hourly bins; inspect scheduled-hour coverage manually and choose a defensible threshold. Limits use I = mean +/- 2.66 MR-bar and MR UCL = 3.267 MR-bar. Daily maxima depend on sampling frequency and weekday seasonality; investigate signals before claiming process changes. January return is January 19, 2027 in the academic calendar. Decay uses a fixed Phase I baseline and at least 28 return-period days; inspect residuals, weekday effects and baseline sensitivity before reporting the half-life.
+**I-MR:** after reviewing the first three normal weeks and coverage, run `python -m rec_occupancy.analysis.control --phase-start YYYY-MM-DD --phase-end YYYY-MM-DD`. Require 21 accepted Phase I days; moving ranges use consecutive calendar days only. Default daily inclusion is at least ten observed hourly bins; inspect scheduled-hour coverage manually and choose a defensible threshold. Limits use I = mean +/- 2.66 MR-bar and MR UCL = 3.267 MR-bar. Daily maxima depend on sampling frequency and weekday seasonality; investigate signals before claiming process changes. January return is January 19, 2027 in the academic calendar. Decay uses a fixed Phase I baseline and at least 28 return-period days; inspect residuals, weekday effects and baseline sensitivity before reporting the half-life.
 
 **Leveling:** shifts a chosen fraction of average occupancy person-hours from [17:00,19:00) to [14:00,16:00), equally divided between the two receiving bins. Requires four observed days in every included profile bin, required donor/receiving bins and a constant room capacity. It conserves person-hours, not arrivals; no behavioral or causal claim is justified. Observed profile hours may not cover the entire opening day. A real arrival-shift model needs arrivals, departures and visit-duration distributions.
 

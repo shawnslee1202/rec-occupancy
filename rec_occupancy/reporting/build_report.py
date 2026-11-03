@@ -7,7 +7,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
-from poll_rec_counts import ROOT
+from rec_occupancy.collection.poll_rec_counts import ROOT
 from datetime import datetime
 from zoneinfo import ZoneInfo
 

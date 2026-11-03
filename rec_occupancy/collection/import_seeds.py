@@ -1,6 +1,6 @@
 """Idempotently merge the original local captures without replacing hosted history."""
 import gzip,json,hashlib,csv
-from poll_rec_counts import ROOT,ingest,connect
+from rec_occupancy.collection.poll_rec_counts import ROOT,ingest,connect
 def restore():
     db=connect()
     db.execute("CREATE TABLE IF NOT EXISTS seed_imports(name TEXT PRIMARY KEY)")

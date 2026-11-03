@@ -5,10 +5,10 @@ import tempfile
 import unittest
 import pandas as pd
 from datetime import date
-from poll_rec_counts import connect,ingest,utc_stamp,validate
-from analyze import level_profile,constraint_bounds,forecast_room
-from refresh_hours import parse
-from control import imr
+from rec_occupancy.collection.poll_rec_counts import connect,ingest,utc_stamp,validate
+from rec_occupancy.analysis.analyze import level_profile,constraint_bounds,forecast_room
+from rec_occupancy.collection.refresh_hours import parse
+from rec_occupancy.analysis.control import imr
 
 def row(lid=1,count=20,time='2026-10-22T15:00:00',closed=False):
     return dict(LocationId=lid,LocationName='Strength',FacilityId=1,FacilityName='Test',
@@ -38,7 +38,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(db.execute('SELECT polled_at_utc FROM counts').fetchone()[0],'2026-10-22T20:10:00+00:00')
         db.close()
     def test_weather_never_uses_future_vintage(self):
-        from weather import setup,features
+        from rec_occupancy.collection.weather import setup,features
         db=connect(self.root); setup(db)
         db.execute("INSERT INTO weather_forecasts VALUES ('2026-10-22T20:10:00+00:00','2026-10-22T21:00:00+00:00',25,0)")
         self.assertTrue(features(['2026-10-22T20:05:00+00:00'],db).temperature_c.isna().all())

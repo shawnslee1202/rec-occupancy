@@ -2,7 +2,7 @@
 import argparse
 import csv
 from datetime import datetime
-from poll_rec_counts import connect
+from rec_occupancy.collection.poll_rec_counts import connect
 
 def load(path, db):
     rows = list(csv.DictReader(open(path,encoding='utf-8-sig',newline='')))

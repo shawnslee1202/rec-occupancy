@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 URL = os.environ.get('REC_COUNTS_URL', 'https://goboardapi.azurewebsites.net/api/FacilityCount/GetCountsByAccount?AccountAPIKey=99563b55-ae4f-4001-b384-648e0ebeaeb5')
 CENTRAL = ZoneInfo('America/Chicago')
 

@@ -3,7 +3,7 @@ import argparse
 import json
 import numpy as np
 import pandas as pd
-from poll_rec_counts import ROOT
+from rec_occupancy.collection.poll_rec_counts import ROOT
 
 def imr(series, phase_start, phase_end):
     series=series.sort_index()

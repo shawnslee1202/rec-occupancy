@@ -18,9 +18,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'tzdata>=2025.2,<2028'
-      - run: python import_seeds.py
+      - run: python -m rec_occupancy.collection.import_seeds
       - name: Capture public feed
-        run: python poll_rec_counts.py
+        run: python -m rec_occupancy.collection.poll_rec_counts
       - name: Preserve archive and database, including failure logs
         if: always()
         run: |

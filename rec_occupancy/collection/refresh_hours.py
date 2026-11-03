@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 import html
 import re
 from urllib.request import Request, urlopen
-from poll_rec_counts import ROOT, CENTRAL, connect
+from rec_occupancy.collection.poll_rec_counts import ROOT, CENTRAL, connect
 
 MAPPING={574:9276,575:9274,576:9275}
 

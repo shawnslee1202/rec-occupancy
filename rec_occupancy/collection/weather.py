@@ -3,7 +3,7 @@ import json
 from datetime import datetime,timezone
 from urllib.request import Request,urlopen
 import pandas as pd
-from poll_rec_counts import ROOT,connect
+from rec_occupancy.collection.poll_rec_counts import ROOT,connect
 URL='https://api.open-meteo.com/v1/forecast?latitude=30.61&longitude=-96.34&hourly=temperature_2m,precipitation&forecast_days=2&timezone=UTC'
 def setup(db):
     db.execute("CREATE TABLE IF NOT EXISTS weather_forecasts(fetched_at_utc TEXT,valid_at_utc TEXT,temperature_c REAL,precipitation_mm REAL,PRIMARY KEY(fetched_at_utc,valid_at_utc))")
