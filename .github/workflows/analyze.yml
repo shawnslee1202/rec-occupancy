@@ -50,7 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pages: write
-      deployments: write
       id-token: write
     environment:
       name: github-pages
@@ -58,6 +57,12 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  cleanup:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+    steps:
       - name: Keep only the current Pages deployment
         uses: actions/github-script@v8
         with:
