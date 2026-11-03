@@ -1,7 +1,7 @@
 name: Refresh hours and analysis
 on:
   push:
-    paths: [rec_occupancy/reporting/build_dashboard.py]
+    paths: [rec_occupancy/reporting/build_dashboard.py, .github/workflows/analyze.yml]
   workflow_dispatch:
   schedule:
     - cron: '43 4,10,16,22 * * *'
@@ -50,6 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pages: write
+      deployments: write
       id-token: write
     environment:
       name: github-pages
@@ -57,3 +58,39 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Keep only the current Pages deployment
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const repo = context.repo;
+            const deployments = await github.paginate(github.rest.repos.listDeployments, {
+              ...repo, environment: 'github-pages', per_page: 100
+            });
+            deployments.sort((a, b) => b.id - a.id);
+            const current = deployments[0];
+            if (!current || current.sha !== context.sha) {
+              throw new Error('The newest Pages deployment does not match this run.');
+            }
+            const states = await Promise.all(deployments.map(async deployment => {
+              const {data} = await github.rest.repos.listDeploymentStatuses({
+                ...repo, deployment_id: deployment.id, per_page: 1
+              });
+              return data[0]?.state;
+            }));
+            if (states[0] !== 'success' ||
+                states.some(state => !['success', 'inactive', 'failure', 'error'].includes(state))) {
+              throw new Error('Cleanup requires a successful current deployment and completed older deployments.');
+            }
+            for (const deployment of deployments.slice(1)) {
+              await github.rest.repos.createDeploymentStatus({
+                ...repo, deployment_id: deployment.id, state: 'inactive', auto_inactive: false
+              });
+              await github.rest.repos.deleteDeployment({...repo, deployment_id: deployment.id});
+            }
+            const remaining = await github.paginate(github.rest.repos.listDeployments, {
+              ...repo, environment: 'github-pages', per_page: 100
+            });
+            if (remaining.length !== 1 || remaining[0].id !== current.id) {
+              throw new Error('Deployment cleanup did not leave exactly the current deployment.');
+            }
+            core.info('Retained deployment ' + current.id + '; removed ' + (deployments.length - 1) + ' older records.');
