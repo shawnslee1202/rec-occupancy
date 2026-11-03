@@ -1,5 +1,7 @@
 name: Refresh hours and analysis
 on:
+  push:
+    paths: [rec_occupancy/reporting/build_dashboard.py]
   workflow_dispatch:
   schedule:
     - cron: '43 4,10,16,22 * * *'
@@ -34,7 +36,7 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sources config reports docs raw rec_counts.sqlite
+          git add sources config reports dashboard raw rec_counts.sqlite
           if ! git diff --cached --quiet; then
             git commit -m 'analysis: refresh published hours and reports'
             git push
@@ -42,7 +44,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: docs
+          path: dashboard
   deploy:
     needs: analyze
     runs-on: ubuntu-latest
