@@ -3,13 +3,19 @@
 How busy are the weight rooms at Main, Southside, and Polo Road?  
 Author: [shawnslee1202](https://github.com/shawnslee1202)
 
+## Daily collection summary
+
+Updated November 04, 2026. The latest collection in the analysis was Nov 04 at 04:54 PM CST. The archive contains 47 successful collections and 1,594 distinct readings across 71 zones.
+
+## Coverage through November 1, 2026
+
 ![Share of scheduled hours covered by usable headcounts at three weight rooms](figures/coverage.svg)
 
 Usable headcounts covered about one quarter of scheduled weight-room hours through November 1, 2026.
 
 ## What this is
 
-Texas A&M publishes the latest staff headcount for each recreation zone. This project saves the readings so visitors can compare occupancy by room, day, and hour. By November 1, 36 successful collections had recorded 1,181 distinct readings across 71 zones. The analysis uses published opening hours and counts gaps separately so a missed reading cannot make a room look empty.
+Texas A&M publishes the latest staff headcount for each recreation zone. This project saves the readings so visitors can compare occupancy by room, day, and hour. The analysis uses published opening hours and counts gaps separately so a missed reading cannot make a room look empty.
 
 ## Results at a glance
 
