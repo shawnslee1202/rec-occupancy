@@ -28,6 +28,36 @@ jobs:
       - run: python -m rec_occupancy.analysis.analyze
       - run: python -m rec_occupancy.reporting.build_dashboard
       - run: python -m rec_occupancy.reporting.build_report
+      - name: Refresh daily README summary
+        shell: python
+        run: |
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          central = ZoneInfo("America/Chicago")
+          today = datetime.now(central).strftime("%B %d, %Y")
+          readme = Path("README.md")
+          original = readme.read_text(encoding="utf-8")
+          heading = "## Daily collection summary\n\n"
+          before, section = original.split(heading, 1)
+          previous, following = section.split("\n## ", 1)
+          if not previous.startswith(f"Updated {today}."):
+              status = json.loads(Path("reports/status.json").read_text())
+              latest = datetime.fromisoformat(status["last_poll"]).astimezone(central)
+              summary = (
+                  f"Updated {today}. The latest collection in the analysis was "
+                  f"{latest:%b %d at %I:%M %p %Z}. The archive contains "
+                  f"{status['successful_polls']:,} successful collections and "
+                  f"{status['distinct_observations']:,} distinct readings across "
+                  f"{status['zones']:,} zones.\n"
+              )
+              readme.write_bytes(
+                  (before + heading + summary + "\n## " + following)
+                  .replace("\n", "\r\n" if b"\r\n" in readme.read_bytes() else "\n")
+                  .encode("utf-8")
+              )
       - uses: actions/upload-artifact@v4
         with:
           name: occupancy-reports
@@ -36,7 +66,7 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sources config reports dashboard raw rec_counts.sqlite
+          git add README.md sources config reports dashboard raw rec_counts.sqlite
           if ! git diff --cached --quiet; then
             git commit -m 'analysis: refresh published hours and reports'
             git push
