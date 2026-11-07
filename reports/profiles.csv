@@ -36,6 +36,7 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9274,Southside Strength & Conditioning Area,4,18,0.31666666666666665,95.0,1,1
 9274,Southside Strength & Conditioning Area,4,21,0.26,78.0,1,1
 9274,Southside Strength & Conditioning Area,4,22,0.21999999999999997,66.0,2,2
+9274,Southside Strength & Conditioning Area,5,10,0.09,27.0,1,1
 9274,Southside Strength & Conditioning Area,5,13,0.22,66.0,1,1
 9274,Southside Strength & Conditioning Area,5,17,0.19666666666666666,59.0,1,1
 9274,Southside Strength & Conditioning Area,5,21,0.18,54.0,1,1
