@@ -35,13 +35,15 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9274,Southside Strength & Conditioning Area,3,21,0.25666666666666665,77.0,1,1
 9274,Southside Strength & Conditioning Area,3,22,0.31666666666666665,95.0,1,1
 9274,Southside Strength & Conditioning Area,3,23,0.13666666666666666,41.0,1,1
+9274,Southside Strength & Conditioning Area,4,9,0.12,36.0,1,1
 9274,Southside Strength & Conditioning Area,4,10,0.14333333333333334,43.0,1,1
 9274,Southside Strength & Conditioning Area,4,13,0.26,78.0,1,1
-9274,Southside Strength & Conditioning Area,4,15,0.30333333333333334,91.0,1,1
+9274,Southside Strength & Conditioning Area,4,15,0.36333333333333334,109.0,2,2
 9274,Southside Strength & Conditioning Area,4,16,0.39,117.0,1,1
 9274,Southside Strength & Conditioning Area,4,18,0.31666666666666665,95.0,1,1
+9274,Southside Strength & Conditioning Area,4,19,0.32666666666666666,98.0,1,1
 9274,Southside Strength & Conditioning Area,4,21,0.26,78.0,1,1
-9274,Southside Strength & Conditioning Area,4,22,0.21999999999999997,66.0,2,2
+9274,Southside Strength & Conditioning Area,4,22,0.23444444444444443,70.33333333333333,3,3
 9274,Southside Strength & Conditioning Area,5,10,0.09,27.0,1,1
 9274,Southside Strength & Conditioning Area,5,13,0.22999999999999998,69.0,2,2
 9274,Southside Strength & Conditioning Area,5,17,0.21166666666666667,63.5,2,2
@@ -79,10 +81,11 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9275,Polo Road Strength & Conditioning,3,17,0.23199999999999998,58.0,2,2
 9275,Polo Road Strength & Conditioning,3,18,0.32,80.0,3,3
 9275,Polo Road Strength & Conditioning,3,20,0.20400000000000001,51.0,2,2
+9275,Polo Road Strength & Conditioning,4,9,0.072,18.0,1,1
 9275,Polo Road Strength & Conditioning,4,10,0.216,54.0,1,1
 9275,Polo Road Strength & Conditioning,4,13,0.204,51.0,1,1
-9275,Polo Road Strength & Conditioning,4,15,0.196,49.0,1,1
-9275,Polo Road Strength & Conditioning,4,16,0.168,42.0,1,1
+9275,Polo Road Strength & Conditioning,4,15,0.22,55.0,2,2
+9275,Polo Road Strength & Conditioning,4,16,0.20800000000000002,52.0,2,2
 9275,Polo Road Strength & Conditioning,4,17,0.224,56.0,1,1
 9275,Polo Road Strength & Conditioning,4,20,0.2,50.0,1,1
 9276,Student Rec Center Strength & Conditioning,0,9,0.3075,123.0,1,1
@@ -123,13 +126,15 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9276,Student Rec Center Strength & Conditioning,3,21,0.3325,133.0,2,2
 9276,Student Rec Center Strength & Conditioning,3,22,0.20875,83.5,2,2
 9276,Student Rec Center Strength & Conditioning,3,23,0.195,78.0,1,1
+9276,Student Rec Center Strength & Conditioning,4,9,0.1675,67.0,1,1
 9276,Student Rec Center Strength & Conditioning,4,10,0.2375,95.0,1,1
 9276,Student Rec Center Strength & Conditioning,4,13,0.32,128.0,1,1
-9276,Student Rec Center Strength & Conditioning,4,15,0.3175,127.0,1,1
+9276,Student Rec Center Strength & Conditioning,4,15,0.33,132.0,2,2
 9276,Student Rec Center Strength & Conditioning,4,16,0.335,134.0,1,1
 9276,Student Rec Center Strength & Conditioning,4,18,0.28,112.0,1,1
+9276,Student Rec Center Strength & Conditioning,4,19,0.2575,103.0,1,1
 9276,Student Rec Center Strength & Conditioning,4,20,0.2875,115.0,1,1
-9276,Student Rec Center Strength & Conditioning,4,21,0.165,66.0,1,1
+9276,Student Rec Center Strength & Conditioning,4,21,0.1825,73.0,2,2
 9276,Student Rec Center Strength & Conditioning,5,10,0.0575,23.0,1,1
 9276,Student Rec Center Strength & Conditioning,5,12,0.24,96.0,1,1
 9276,Student Rec Center Strength & Conditioning,5,14,0.1575,63.0,1,1
