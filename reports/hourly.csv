@@ -72,6 +72,8 @@ location_id,location,hour_bin,utilization,people,capacity,n_readings,weekday,hou
 9274,Southside Strength & Conditioning Area,2026-11-13 15:00:00,0.42333333333333334,127.0,300.0,1,4,15
 9274,Southside Strength & Conditioning Area,2026-11-13 19:00:00,0.32666666666666666,98.0,300.0,1,4,19
 9274,Southside Strength & Conditioning Area,2026-11-13 22:00:00,0.2633333333333333,79.0,300.0,1,4,22
+9274,Southside Strength & Conditioning Area,2026-11-14 08:00:00,0.06666666666666667,20.0,300.0,1,5,8
+9274,Southside Strength & Conditioning Area,2026-11-14 10:00:00,0.23666666666666666,71.0,300.0,1,5,10
 9275,Polo Road Strength & Conditioning,2026-10-22 17:00:00,0.228,57.0,250.0,1,3,17
 9275,Polo Road Strength & Conditioning,2026-10-23 20:00:00,0.2,50.0,250.0,1,4,20
 9275,Polo Road Strength & Conditioning,2026-10-26 09:00:00,0.172,43.0,250.0,1,0,9
