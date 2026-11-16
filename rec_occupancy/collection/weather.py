@@ -1,6 +1,7 @@
 """Archive weather forecast vintages; never use future realized weather. Open-Meteo CC BY 4.0."""
 import json
 from datetime import datetime,timezone
+from urllib.error import URLError
 from urllib.request import Request,urlopen
 import pandas as pd
 from rec_occupancy.collection.poll_rec_counts import ROOT,connect
@@ -8,8 +9,13 @@ URL='https://api.open-meteo.com/v1/forecast?latitude=30.61&longitude=-96.34&hour
 def setup(db):
     db.execute("CREATE TABLE IF NOT EXISTS weather_forecasts(fetched_at_utc TEXT,valid_at_utc TEXT,temperature_c REAL,precipitation_mm REAL,PRIMARY KEY(fetched_at_utc,valid_at_utc))")
 def refresh(root=ROOT):
-    with urlopen(Request(URL,headers={'User-Agent':'TAMURecOccupancyResearch/1.0'}),timeout=45) as r:
-        body=r.read().decode()
+    request = Request(URL, headers={'User-Agent': 'TAMURecOccupancyResearch/1.0'})
+    try:
+        with urlopen(request, timeout=45) as response:
+            body = response.read().decode()
+    except (URLError, TimeoutError) as exc:
+        print(f'::warning::Skipping this weather forecast. Open-Meteo request failed: {exc}')
+        return
     fetched=datetime.now(timezone.utc).isoformat(timespec='microseconds')
     folder=root/'sources/weather'; folder.mkdir(parents=True,exist_ok=True)
     with (folder/f'{fetched[:10]}.jsonl').open('a',encoding='utf-8') as f:
