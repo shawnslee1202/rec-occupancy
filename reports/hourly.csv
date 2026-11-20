@@ -86,6 +86,9 @@ location_id,location,hour_bin,utilization,people,capacity,n_readings,weekday,hou
 9274,Southside Strength & Conditioning Area,2026-11-18 18:00:00,0.4633333333333333,139.0,300.0,1,2,18
 9274,Southside Strength & Conditioning Area,2026-11-18 23:00:00,0.17666666666666667,53.0,300.0,1,2,23
 9274,Southside Strength & Conditioning Area,2026-11-19 11:00:00,0.21333333333333335,64.0,300.0,1,3,11
+9274,Southside Strength & Conditioning Area,2026-11-19 17:00:00,0.23,69.0,300.0,1,3,17
+9274,Southside Strength & Conditioning Area,2026-11-19 22:00:00,0.26,78.0,300.0,1,3,22
+9274,Southside Strength & Conditioning Area,2026-11-20 07:00:00,0.04666666666666667,14.0,300.0,1,4,7
 9275,Polo Road Strength & Conditioning,2026-10-22 17:00:00,0.228,57.0,250.0,1,3,17
 9275,Polo Road Strength & Conditioning,2026-10-23 20:00:00,0.2,50.0,250.0,1,4,20
 9275,Polo Road Strength & Conditioning,2026-10-26 09:00:00,0.172,43.0,250.0,1,0,9
@@ -139,6 +142,9 @@ location_id,location,hour_bin,utilization,people,capacity,n_readings,weekday,hou
 9275,Polo Road Strength & Conditioning,2026-11-18 16:00:00,0.256,64.0,250.0,1,2,16
 9275,Polo Road Strength & Conditioning,2026-11-18 20:00:00,0.168,42.0,250.0,1,2,20
 9275,Polo Road Strength & Conditioning,2026-11-19 11:00:00,0.184,46.0,250.0,1,3,11
+9275,Polo Road Strength & Conditioning,2026-11-19 17:00:00,0.284,71.0,250.0,1,3,17
+9275,Polo Road Strength & Conditioning,2026-11-19 19:00:00,0.172,43.0,250.0,1,3,19
+9275,Polo Road Strength & Conditioning,2026-11-20 07:00:00,0.044,11.0,250.0,1,4,7
 9276,Student Rec Center Strength & Conditioning,2026-10-22 18:00:00,0.425,170.0,400.0,1,3,18
 9276,Student Rec Center Strength & Conditioning,2026-10-25 18:00:00,0.2475,99.0,400.0,1,6,18
 9276,Student Rec Center Strength & Conditioning,2026-10-25 19:00:00,0.2675,107.0,400.0,1,6,19
@@ -225,3 +231,6 @@ location_id,location,hour_bin,utilization,people,capacity,n_readings,weekday,hou
 9276,Student Rec Center Strength & Conditioning,2026-11-18 18:00:00,0.445,178.0,400.0,1,2,18
 9276,Student Rec Center Strength & Conditioning,2026-11-18 22:00:00,0.275,110.0,400.0,1,2,22
 9276,Student Rec Center Strength & Conditioning,2026-11-19 10:00:00,0.2125,85.0,400.0,1,3,10
+9276,Student Rec Center Strength & Conditioning,2026-11-19 16:00:00,0.39,156.0,400.0,1,3,16
+9276,Student Rec Center Strength & Conditioning,2026-11-19 22:00:00,0.19,76.0,400.0,1,3,22
+9276,Student Rec Center Strength & Conditioning,2026-11-19 23:00:00,0.145,58.0,400.0,1,3,23
