@@ -27,6 +27,7 @@ location_id,location,date,peak,observed_hours
 9274,Southside Strength & Conditioning Area,2026-11-18,0.4633333333333333,3
 9274,Southside Strength & Conditioning Area,2026-11-19,0.26,3
 9274,Southside Strength & Conditioning Area,2026-11-20,0.30333333333333334,4
+9274,Southside Strength & Conditioning Area,2026-11-21,0.23333333333333334,1
 9275,Polo Road Strength & Conditioning,2026-10-22,0.228,1
 9275,Polo Road Strength & Conditioning,2026-10-23,0.2,1
 9275,Polo Road Strength & Conditioning,2026-10-26,0.408,4
@@ -74,3 +75,4 @@ location_id,location,date,peak,observed_hours
 9276,Student Rec Center Strength & Conditioning,2026-11-18,0.445,3
 9276,Student Rec Center Strength & Conditioning,2026-11-19,0.39,4
 9276,Student Rec Center Strength & Conditioning,2026-11-20,0.275,3
+9276,Student Rec Center Strength & Conditioning,2026-11-21,0.13,1
