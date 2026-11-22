@@ -248,3 +248,4 @@ location_id,location,hour_bin,utilization,people,capacity,n_readings,weekday,hou
 9276,Student Rec Center Strength & Conditioning,2026-11-21 11:00:00,0.13,52.0,400.0,1,5,11
 9276,Student Rec Center Strength & Conditioning,2026-11-21 16:00:00,0.135,54.0,400.0,1,5,16
 9276,Student Rec Center Strength & Conditioning,2026-11-21 19:00:00,0.22,88.0,400.0,1,5,19
+9276,Student Rec Center Strength & Conditioning,2026-11-21 20:00:00,0.1475,59.0,400.0,1,5,20
