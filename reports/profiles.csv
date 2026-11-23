@@ -1,4 +1,5 @@
 location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_readings
+9274,Southside Strength & Conditioning Area,0,6,0.37666666666666665,113.0,1,1
 9274,Southside Strength & Conditioning Area,0,9,0.23,69.0,1,1
 9274,Southside Strength & Conditioning Area,0,11,0.37666666666666665,113.0,1,1
 9274,Southside Strength & Conditioning Area,0,12,0.38166666666666665,114.5,2,2
@@ -63,9 +64,10 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9274,Southside Strength & Conditioning Area,6,16,0.27,81.0,2,2
 9274,Southside Strength & Conditioning Area,6,18,0.2833333333333333,85.0,2,2
 9274,Southside Strength & Conditioning Area,6,19,0.21666666666666667,65.0,2,2
-9274,Southside Strength & Conditioning Area,6,20,0.19333333333333333,58.0,1,1
+9274,Southside Strength & Conditioning Area,6,20,0.2,60.0,2,2
 9274,Southside Strength & Conditioning Area,6,22,0.14555555555555555,43.666666666666664,3,3
 9274,Southside Strength & Conditioning Area,6,23,0.09,27.0,1,1
+9275,Polo Road Strength & Conditioning,0,6,0.028,7.0,1,1
 9275,Polo Road Strength & Conditioning,0,9,0.172,43.0,1,1
 9275,Polo Road Strength & Conditioning,0,10,0.3,75.0,1,1
 9275,Polo Road Strength & Conditioning,0,11,0.268,67.0,1,1
@@ -105,6 +107,7 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9275,Polo Road Strength & Conditioning,4,16,0.20800000000000002,52.0,2,2
 9275,Polo Road Strength & Conditioning,4,17,0.202,50.5,2,2
 9275,Polo Road Strength & Conditioning,4,20,0.2,50.0,1,1
+9276,Student Rec Center Strength & Conditioning,0,7,0.125,50.0,1,1
 9276,Student Rec Center Strength & Conditioning,0,9,0.3075,123.0,1,1
 9276,Student Rec Center Strength & Conditioning,0,11,0.345,138.0,1,1
 9276,Student Rec Center Strength & Conditioning,0,13,0.36625,146.5,2,2
@@ -169,5 +172,5 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9276,Student Rec Center Strength & Conditioning,6,16,0.19,76.0,2,2
 9276,Student Rec Center Strength & Conditioning,6,18,0.25375000000000003,101.5,2,2
 9276,Student Rec Center Strength & Conditioning,6,19,0.3,120.0,3,3
-9276,Student Rec Center Strength & Conditioning,6,21,0.13,52.0,1,1
+9276,Student Rec Center Strength & Conditioning,6,21,0.16625,66.5,2,2
 9276,Student Rec Center Strength & Conditioning,6,22,0.16625,66.5,2,2
