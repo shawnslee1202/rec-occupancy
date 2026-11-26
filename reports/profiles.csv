@@ -25,7 +25,7 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9274,Southside Strength & Conditioning Area,2,10,0.21166666666666667,63.5,2,2
 9274,Southside Strength & Conditioning Area,2,11,0.26,78.0,1,1
 9274,Southside Strength & Conditioning Area,2,12,0.28,84.0,1,1
-9274,Southside Strength & Conditioning Area,2,13,0.29,87.0,1,1
+9274,Southside Strength & Conditioning Area,2,13,0.19833333333333333,59.5,2,2
 9274,Southside Strength & Conditioning Area,2,15,0.3466666666666667,104.0,1,1
 9274,Southside Strength & Conditioning Area,2,16,0.45,135.0,1,1
 9274,Southside Strength & Conditioning Area,2,18,0.42,126.0,2,2
@@ -138,6 +138,7 @@ location_id,location,weekday,hour,mean_utilization,mean_people,n_hours,n_reading
 9276,Student Rec Center Strength & Conditioning,2,12,0.4275,171.0,1,1
 9276,Student Rec Center Strength & Conditioning,2,15,0.3525,141.0,1,1
 9276,Student Rec Center Strength & Conditioning,2,16,0.40875,163.5,2,2
+9276,Student Rec Center Strength & Conditioning,2,17,0.245,98.0,1,1
 9276,Student Rec Center Strength & Conditioning,2,18,0.445,178.0,1,1
 9276,Student Rec Center Strength & Conditioning,2,19,0.3675,147.0,1,1
 9276,Student Rec Center Strength & Conditioning,2,21,0.38875,155.5,2,2
